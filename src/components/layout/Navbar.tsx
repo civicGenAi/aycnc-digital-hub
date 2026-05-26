@@ -7,7 +7,6 @@ import logoUrl from "@/assets/logo.png";
 const navLinks = [
   { to: "/about", label: "About" },
   { to: "/programme", label: "Programme" },
-  { to: "/apply", label: "Apply" },
   { to: "/partners", label: "Partners" },
   { to: "/impact", label: "Impact" },
   { to: "/news", label: "News" },
@@ -33,6 +32,10 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
 
+  // The transparent bar is only legible over the dark home hero. Every other
+  // page opens on a light section, so keep the bar solid there from the top.
+  const solid = scrolled || location.pathname !== "/";
+
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 80);
     handler();
@@ -47,7 +50,7 @@ export default function Navbar() {
       <header
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-[400ms]",
-          scrolled ? "bg-navy-dark/95 backdrop-blur-xl border-b border-gold/20" : "bg-transparent"
+          solid ? "bg-navy-dark/95 backdrop-blur-xl border-b border-gold/20" : "bg-transparent"
         )}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 md:px-8 py-4">

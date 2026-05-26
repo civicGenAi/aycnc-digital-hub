@@ -21,7 +21,7 @@ export default function HeroSlideshow() {
 
   return (
     <section className="relative">
-      <div className="relative h-[100svh] w-full overflow-hidden bg-navy-dark">
+      <div className="relative h-[78svh] min-h-[520px] w-full overflow-hidden bg-navy-dark">
         {/* Background slides */}
         <AnimatePresence mode="sync">
           <motion.div
@@ -62,20 +62,11 @@ export default function HeroSlideshow() {
                 transition={{ duration: 0.5 }}
                 className="text-center md:text-left"
               >
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2, duration: 0.5 }}
-                  className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 backdrop-blur"
-                >
-                  <span className="block h-1.5 w-1.5 rounded-full bg-gold animate-pulse2" />
-                  <span className="font-mono text-[0.72rem] tracking-widest uppercase text-gold">{slide.eyebrow}</span>
-                </motion.div>
-
                 <motion.h1
                   initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.35, duration: 0.6 }}
-                  className="mt-6 font-display font-black text-white leading-[1.05]"
-                  style={{ fontSize: "clamp(2.75rem, 6.5vw, 6rem)" }}
+                  transition={{ delay: 0.2, duration: 0.6 }}
+                  className="font-display font-black text-white leading-[1.08]"
+                  style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
                 >
                   <span className="block">{slide.headlineLines[0]}</span>
                   <motion.span
