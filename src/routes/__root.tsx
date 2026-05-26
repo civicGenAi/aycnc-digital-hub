@@ -11,6 +11,7 @@ import {
 import appCss from "../styles.css?url";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import MobileApplyBar from "@/components/layout/MobileApplyBar";
 import NotFoundPage from "@/components/pages/NotFoundPage";
 
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
@@ -94,6 +95,7 @@ function RootComponent() {
           <Outlet />
         </main>
         <Footer />
+        <MobileApplyBar />
       </div>
     </QueryClientProvider>
   );
