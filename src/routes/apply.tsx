@@ -346,7 +346,7 @@ function Step6({ form }: any) {
         ].map(([k, v]) => (
           <div key={k} className="flex justify-between border-b border-navy/10 py-3">
             <span className="font-mono text-xs uppercase tracking-wider text-navy/60">{k}</span>
-            <span className="font-body text-navy">{v || "—"}</span>
+            <span className="font-body text-navy">{v || "·"}</span>
           </div>
         ))}
       </div>
