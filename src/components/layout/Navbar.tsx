@@ -112,34 +112,75 @@ export default function Navbar() {
         {open && (
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-40 bg-navy-dark lg:hidden flex flex-col"
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-40 lg:hidden flex flex-col overflow-hidden bg-navy-dark"
           >
-            <div className="flex-1 flex flex-col justify-center px-8 gap-5 pt-20">
-              {navLinks.map((l, i) => (
-                <motion.div
-                  key={l.to}
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 + i * 0.06, duration: 0.4 }}
-                >
-                  <Link
-                    to={l.to}
-                    className="block font-display italic font-black text-[2.5rem] leading-tight text-white hover:text-gold transition-colors"
+            {/* Decorative — on-brand, non-interactive */}
+            <span
+              className="pointer-events-none absolute -right-12 top-16 font-display font-black leading-none text-white/[0.04] select-none"
+              style={{ fontSize: "52vw" }}
+            >
+              55
+            </span>
+            <svg
+              className="pointer-events-none absolute -left-20 bottom-24 opacity-40"
+              width="280" height="280" viewBox="0 0 280 280" fill="none"
+              stroke="rgba(245,166,35,0.22)" strokeWidth="1"
+            >
+              <circle cx="140" cy="140" r="60" />
+              <circle cx="140" cy="140" r="100" />
+              <circle cx="140" cy="140" r="138" />
+            </svg>
+
+            <nav className="relative flex-1 flex flex-col justify-center px-8 gap-1">
+              {navLinks.map((l, i) => {
+                const active = location.pathname === l.to;
+                return (
+                  <motion.div
+                    key={l.to}
+                    initial={{ opacity: 0, x: -32 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ delay: 0.08 + i * 0.06, duration: 0.4, ease: "easeOut" }}
                   >
-                    {l.label}
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
-            <div className="p-6">
+                    <Link to={l.to} className="group flex items-baseline gap-4 py-2">
+                      <span className="font-mono text-sm tabular-nums text-gold/55 group-hover:text-gold transition-colors">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span
+                        className={cn(
+                          "font-display italic font-black text-[2.4rem] leading-none transition-colors",
+                          active ? "text-gold" : "text-white group-hover:text-gold",
+                        )}
+                      >
+                        {l.label}
+                      </span>
+                    </Link>
+                  </motion.div>
+                );
+              })}
+            </nav>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.4 }}
+              className="relative border-t border-white/10 px-8 py-6 space-y-4"
+            >
               <Link
                 to="/apply"
-                className="block w-full text-center rounded-full bg-gold px-6 py-4 font-display italic font-semibold text-navy-dark"
+                className="relative flex items-center justify-center overflow-hidden rounded-full bg-gold px-6 py-4 font-display italic font-semibold text-navy-dark"
               >
-                Apply for Cohort 1
+                <span className="relative z-10">Apply for Cohort 1</span>
+                <span className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/30 to-transparent" />
               </Link>
-            </div>
+              <a
+                href="mailto:info@aycnc.org"
+                className="block text-center font-mono text-xs uppercase tracking-[0.22em] text-white/40 hover:text-gold transition-colors"
+              >
+                info@aycnc.org
+              </a>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -60,8 +60,14 @@ export default function HeroSlideshow() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
-                className="text-center md:text-left"
+                className="text-left"
               >
+                <motion.span
+                  initial={{ scaleX: 0, opacity: 0 }}
+                  animate={{ scaleX: 1, opacity: 1 }}
+                  transition={{ delay: 0.1, duration: 0.5 }}
+                  className="mb-5 block h-1 w-12 origin-left rounded-full bg-gold"
+                />
                 <motion.h1
                   initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.6 }}
@@ -89,7 +95,7 @@ export default function HeroSlideshow() {
                 <motion.p
                   initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.8, duration: 0.55 }}
-                  className="mt-6 font-body font-light text-white/70 max-w-md mx-auto md:mx-0 leading-[1.75]"
+                  className="mt-6 font-body font-light text-white/70 max-w-md leading-[1.75]"
                   style={{ fontSize: "clamp(0.95rem, 1.5vw, 1.125rem)" }}
                 >
                   {slide.sub}
@@ -154,9 +160,42 @@ export default function HeroSlideshow() {
         </div>
       </div>
 
-      {/* Stats bar */}
+      {/* Mobile: institutional credentials (the numeric stats already appear
+          in the Key Numbers section below, so avoid duplicating them here) */}
+      <MobileCredentials />
+      {/* Desktop: stats bar */}
       <StatsBar />
     </section>
+  );
+}
+
+const credentials = [
+  "Established by AGN",
+  "Endorsed by CAHOSCC",
+  "Hosted in Tanzania",
+  "Applications open July 2026",
+  "55 AU Member States",
+];
+
+function MobileCredentials() {
+  return (
+    <div className="md:hidden overflow-hidden bg-navy-dark border-t border-gold/20 py-3.5">
+      <div className="flex whitespace-nowrap animate-marquee">
+        {[0, 1].map((k) => (
+          <span
+            key={k}
+            className="flex items-center font-mono text-[0.7rem] tracking-[0.22em] uppercase text-gold/55"
+          >
+            {credentials.map((c) => (
+              <span key={c} className="flex items-center pr-7">
+                <span className="mr-7 h-1 w-1 rounded-full bg-gold/50" />
+                {c}
+              </span>
+            ))}
+          </span>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -169,7 +208,7 @@ function StatsBar() {
     { n: 3, l: "Programme Phases" },
   ];
   return (
-    <div ref={ref} className="bg-navy-dark/95 backdrop-blur-md border-t border-white/10 py-5">
+    <div ref={ref} className="hidden md:block bg-navy-dark/95 backdrop-blur-md border-t border-white/10 py-5">
       <div className="mx-auto max-w-6xl grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/10">
         {stats.map((s, i) => (
           <div key={i} className="px-6 py-3 text-center">
