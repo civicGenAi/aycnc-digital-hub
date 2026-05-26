@@ -1,24 +1,18 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import CountUp from "react-countup";
 import { SectionEyebrow, AnimatedSection, fadeUpItem } from "@/components/ui/section";
+import { useSeo } from "@/lib/seo";
 
-export const Route = createFileRoute("/impact")({
-  head: () => ({
-    meta: [
-      { title: "Impact · AYCNC" },
-      { name: "description", content: "Impact at scale. 50 delegates, 5 sub-regions, 70% knowledge improvement, 10 delegates to COP, 50 one-to-one mentor pairs." },
-      { property: "og:title", content: "Impact · AYCNC" },
-      { property: "og:description", content: "Impact at scale. Measurable. Continental." },
-      { property: "og:url", content: "/impact" },
-    ],
-    links: [{ rel: "canonical", href: "/impact" }],
-  }),
-  component: ImpactPage,
-});
-
-function ImpactPage() {
+export default function ImpactPage() {
+  useSeo({
+    title: "Impact · AYCNC",
+    description:
+      "Impact at scale. 50 delegates, 5 sub-regions, 70% knowledge improvement, 10 delegates to COP, 50 one-to-one mentor pairs.",
+    ogDescription: "Impact at scale. Measurable. Continental.",
+    ogUrl: "/impact",
+    canonical: "/impact",
+  });
   return (
     <div>
       <Hero />

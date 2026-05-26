@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { motion, AnimatePresence } from "framer-motion";
@@ -7,24 +6,19 @@ import { PillBadge } from "@/components/ui/PillBadge";
 import { CountdownTimer } from "@/components/ui/CountdownTimer";
 import { auMemberStates } from "@/constants/auMemberStates";
 import { Check } from "lucide-react";
-
-export const Route = createFileRoute("/apply")({
-  head: () => ({
-    meta: [
-      { title: "Apply · AYCNC Cohort 1" },
-      { name: "description", content: "Applications for AYCNC Cohort 1 open July 15 to August 15, 2026. 50 inaugural delegates. Open to climate-active African youth 18 to 35." },
-      { property: "og:title", content: "Apply · AYCNC Cohort 1" },
-      { property: "og:description", content: "Your seat at the table awaits." },
-      { property: "og:url", content: "/apply" },
-    ],
-    links: [{ rel: "canonical", href: "/apply" }],
-  }),
-  component: ApplyPage,
-});
+import { useSeo } from "@/lib/seo";
 
 const OPEN_DATE = new Date("2026-07-15T00:00:00Z");
 
-function ApplyPage() {
+export default function ApplyPage() {
+  useSeo({
+    title: "Apply · AYCNC Cohort 1",
+    description:
+      "Applications for AYCNC Cohort 1 open July 15 to August 15, 2026. 50 inaugural delegates. Open to climate-active African youth 18 to 35.",
+    ogDescription: "Your seat at the table awaits.",
+    ogUrl: "/apply",
+    canonical: "/apply",
+  });
   return (
     <div>
       <Hero />

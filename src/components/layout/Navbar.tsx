@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "@tanstack/react-router";
+import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/cn";
+import logoUrl from "@/assets/logo.png";
 
 const navLinks = [
   { to: "/about", label: "About" },
@@ -16,11 +17,7 @@ const navLinks = [
 function Logo({ light = true }: { light?: boolean }) {
   return (
     <Link to="/" className="flex items-center gap-3 group">
-      <svg width="32" height="28" viewBox="0 0 32 28" fill="none" aria-hidden>
-        <path d="M0 26 L10 4 L18 18 L14 26 Z" fill="#2A7A4B" />
-        <path d="M12 26 L22 6 L32 26 Z" fill="#2C5282" />
-        <circle cx="22" cy="9" r="2.5" fill="#F5A623" />
-      </svg>
+      <img src={logoUrl} alt="AYCNC logo" width={40} height={40} className="h-10 w-auto" />
       <span className="leading-none">
         <span className={cn("block font-display font-bold text-xl tracking-tight", light ? "text-white" : "text-navy-dark")}>AYCNC</span>
         <span className={cn("block font-body font-light text-[0.62rem] tracking-wide mt-0.5", light ? "text-white/55" : "text-ink/60")}>
