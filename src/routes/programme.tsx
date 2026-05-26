@@ -1,25 +1,19 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { SectionEyebrow, AnimatedSection, fadeUpItem } from "@/components/ui/section";
 import { PillBadge } from "@/components/ui/PillBadge";
 import { programmeModules } from "@/constants/programmeData";
 import { GraduationCap, Users, Globe2, ScrollText, Award, BookOpen, Network, Briefcase } from "lucide-react";
+import { useSeo } from "@/lib/seo";
 
-export const Route = createFileRoute("/programme")({
-  head: () => ({
-    meta: [
-      { title: "Programme · AYCNC" },
-      { name: "description", content: "10 weeks of intensive training. Then real deployment in official COP delegations. Three phases, eight modules." },
-      { property: "og:title", content: "Programme · AYCNC" },
-      { property: "og:description", content: "From the classroom to the COP negotiating table." },
-      { property: "og:url", content: "/programme" },
-    ],
-    links: [{ rel: "canonical", href: "/programme" }],
-  }),
-  component: ProgrammePage,
-});
-
-function ProgrammePage() {
+export default function ProgrammePage() {
+  useSeo({
+    title: "Programme · AYCNC",
+    description:
+      "10 weeks of intensive training. Then real deployment in official COP delegations. Three phases, eight modules.",
+    ogDescription: "From the classroom to the COP negotiating table.",
+    ogUrl: "/programme",
+    canonical: "/programme",
+  });
   return (
     <div>
       <Hero />

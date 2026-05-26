@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import HeroSlideshow from "@/components/home/HeroSlideshow";
 import { SectionEyebrow, SectionTitle, AnimatedSection, fadeUpItem } from "@/components/ui/section";
@@ -8,24 +8,19 @@ import { GoldRule } from "@/components/ui/GoldRule";
 import { useInView } from "react-intersection-observer";
 import CountUp from "react-countup";
 import { GraduationCap, Users, Globe2 } from "lucide-react";
-
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "AYCNC · African Youth Climate Negotiation Center" },
-      { name: "description", content: "Building Africa's next generation of climate diplomats. 55 countries, 50 inaugural delegates, applications open July 2026." },
-      { property: "og:title", content: "AYCNC · African Youth Climate Negotiation Center" },
-      { property: "og:description", content: "55 countries. One continental mission. Applications open July 2026." },
-      { property: "og:url", content: "/" },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
-  }),
-  component: HomePage,
-});
+import { useSeo } from "@/lib/seo";
 
 const COHORT_OPEN = new Date("2026-07-15T00:00:00Z");
 
-function HomePage() {
+export default function HomePage() {
+  useSeo({
+    title: "AYCNC · African Youth Climate Negotiation Center",
+    description:
+      "Building Africa's next generation of climate diplomats. 55 countries, 50 inaugural delegates, applications open July 2026.",
+    ogDescription: "55 countries. One continental mission. Applications open July 2026.",
+    ogUrl: "/",
+    canonical: "/",
+  });
   return (
     <div>
       <HeroSlideshow />

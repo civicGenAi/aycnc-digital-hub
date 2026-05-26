@@ -1,21 +1,8 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { SectionEyebrow } from "@/components/ui/section";
-
-export const Route = createFileRoute("/news")({
-  head: () => ({
-    meta: [
-      { title: "News · AYCNC" },
-      { name: "description", content: "Latest news from AYCNC. Endorsements, host country designation, applications, secretariat updates." },
-      { property: "og:title", content: "News · AYCNC" },
-      { property: "og:description", content: "Shaping the conversation. Latest from AYCNC." },
-      { property: "og:url", content: "/news" },
-    ],
-    links: [{ rel: "canonical", href: "/news" }],
-  }),
-  component: NewsPage,
-});
+import { useSeo } from "@/lib/seo";
 
 const articles = [
   { date: "Feb 2026", cat: "INSTITUTIONAL", title: "AYCNC Officially Endorsed by CAHOSCC at 39th AU Assembly", excerpt: "Heads of State and Government ratify the establishment of the African Youth Climate Negotiation Center at the 39th Ordinary Session in Addis Ababa." },
@@ -24,7 +11,15 @@ const articles = [
   { date: "Jun 2026", cat: "OPERATIONS", title: "AYCNC Programme Director Appointed, Secretariat Established in Dar es Salaam", excerpt: "Following AMCEN endorsement, AYCNC moves into operational mode with full staffing of the Dar es Salaam secretariat." },
 ];
 
-function NewsPage() {
+export default function NewsPage() {
+  useSeo({
+    title: "News · AYCNC",
+    description:
+      "Latest news from AYCNC. Endorsements, host country designation, applications, secretariat updates.",
+    ogDescription: "Shaping the conversation. Latest from AYCNC.",
+    ogUrl: "/news",
+    canonical: "/news",
+  });
   return (
     <div>
       <Hero />

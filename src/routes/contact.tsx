@@ -1,25 +1,18 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Mail, MessageSquare } from "lucide-react";
 import { SectionEyebrow } from "@/components/ui/section";
 import { PillBadge } from "@/components/ui/PillBadge";
+import { useSeo } from "@/lib/seo";
 
-export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact · AYCNC" },
-      { name: "description", content: "Get in touch with the AYCNC Secretariat in Dar es Salaam, Tanzania." },
-      { property: "og:title", content: "Contact · AYCNC" },
-      { property: "og:description", content: "Get in touch with the Secretariat." },
-      { property: "og:url", content: "/contact" },
-    ],
-    links: [{ rel: "canonical", href: "/contact" }],
-  }),
-  component: ContactPage,
-});
-
-function ContactPage() {
+export default function ContactPage() {
+  useSeo({
+    title: "Contact · AYCNC",
+    description: "Get in touch with the AYCNC Secretariat in Dar es Salaam, Tanzania.",
+    ogDescription: "Get in touch with the Secretariat.",
+    ogUrl: "/contact",
+    canonical: "/contact",
+  });
   return (
     <div>
       <Hero />

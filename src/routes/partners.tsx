@@ -1,24 +1,18 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { SectionEyebrow, AnimatedSection, fadeUpItem } from "@/components/ui/section";
 import { PillBadge } from "@/components/ui/PillBadge";
 import { Building2, Globe2, HandHeart } from "lucide-react";
+import { useSeo } from "@/lib/seo";
 
-export const Route = createFileRoute("/partners")({
-  head: () => ({
-    meta: [
-      { title: "Partners · AYCNC" },
-      { name: "description", content: "Built on continental authority. AGN, African Union Commission, VP Office Tanzania, UNDP, GIZ, UNEP, YOUNGO." },
-      { property: "og:title", content: "Partners · AYCNC" },
-      { property: "og:description", content: "Continental authority. Real institutional partnerships." },
-      { property: "og:url", content: "/partners" },
-    ],
-    links: [{ rel: "canonical", href: "/partners" }],
-  }),
-  component: PartnersPage,
-});
-
-function PartnersPage() {
+export default function PartnersPage() {
+  useSeo({
+    title: "Partners · AYCNC",
+    description:
+      "Built on continental authority. AGN, African Union Commission, VP Office Tanzania, UNDP, GIZ, UNEP, YOUNGO.",
+    ogDescription: "Continental authority. Real institutional partnerships.",
+    ogUrl: "/partners",
+    canonical: "/partners",
+  });
   return (
     <div>
       <Hero />

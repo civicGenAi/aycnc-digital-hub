@@ -1,23 +1,17 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { SectionEyebrow, SectionTitle, AnimatedSection, fadeUpItem } from "@/components/ui/section";
 import { PillBadge } from "@/components/ui/PillBadge";
+import { useSeo } from "@/lib/seo";
 
-export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About · AYCNC" },
-      { name: "description", content: "AYCNC is Africa's permanent institutional response to the climate diplomacy gap. Hosted in Tanzania. Endorsed by CAHOSCC." },
-      { property: "og:title", content: "About · AYCNC" },
-      { property: "og:description", content: "Africa's permanent institutional response to the climate diplomacy gap." },
-      { property: "og:url", content: "/about" },
-    ],
-    links: [{ rel: "canonical", href: "/about" }],
-  }),
-  component: AboutPage,
-});
-
-function AboutPage() {
+export default function AboutPage() {
+  useSeo({
+    title: "About · AYCNC",
+    description:
+      "AYCNC is Africa's permanent institutional response to the climate diplomacy gap. Hosted in Tanzania. Endorsed by CAHOSCC.",
+    ogDescription: "Africa's permanent institutional response to the climate diplomacy gap.",
+    ogUrl: "/about",
+    canonical: "/about",
+  });
   return (
     <div>
       <Hero />

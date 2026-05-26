@@ -1,4 +1,5 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
+import logoUrl from "@/assets/logo.png";
 
 const marqueeText = "EMPOWERING AFRICAN YOUTH · CLIMATE DIPLOMACY · BUILDING AFRICA'S NEXT GENERATION · AU ENDORSED · TANZANIAN HOST · 55 MEMBER STATES · ";
 
@@ -43,11 +44,7 @@ export default function Footer() {
           {/* Col 1 */}
           <div>
             <div className="flex items-center gap-3 mb-5">
-              <svg width="32" height="28" viewBox="0 0 32 28" fill="none" aria-hidden>
-                <path d="M0 26 L10 4 L18 18 L14 26 Z" fill="#2A7A4B" />
-                <path d="M12 26 L22 6 L32 26 Z" fill="#2C5282" />
-                <circle cx="22" cy="9" r="2.5" fill="#F5A623" />
-              </svg>
+              <img src={logoUrl} alt="AYCNC logo" width={36} height={36} className="h-9 w-auto" />
               <span className="font-display font-bold text-xl text-white">AYCNC</span>
             </div>
             <p className="font-body font-light text-white/60 text-sm leading-relaxed mb-5">
