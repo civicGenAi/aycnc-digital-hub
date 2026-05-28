@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/cn";
-import logoUrl from "@/assets/logo.png";
+import logoWhite from "@/assets/logo-white.png";
 
 const navLinks = [
   { to: "/about", label: "About" },
@@ -13,16 +13,14 @@ const navLinks = [
   { to: "/contact", label: "Contact" },
 ] as const;
 
-function Logo({ light = true }: { light?: boolean }) {
+function Logo() {
   return (
-    <Link to="/" className="flex items-center gap-3 group">
-      <img src={logoUrl} alt="AYCNC logo" width={40} height={40} className="h-10 w-auto" />
-      <span className="leading-none">
-        <span className={cn("block font-display font-bold text-xl tracking-tight", light ? "text-white" : "text-navy-dark")}>AYCNC</span>
-        <span className={cn("block font-body font-light text-[0.62rem] tracking-wide mt-0.5", light ? "text-white/55" : "text-ink/60")}>
-          African Youth Climate Negotiation Center
-        </span>
-      </span>
+    <Link to="/" className="flex items-center group" aria-label="AYCNC — home">
+      <img
+        src={logoWhite}
+        alt="AYCNC — The African Youth Climate Negotiation Center"
+        className="h-11 md:h-12 w-auto"
+      />
     </Link>
   );
 }
@@ -54,7 +52,7 @@ export default function Navbar() {
         )}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 md:px-8 py-4">
-          <Logo light />
+          <Logo />
           <nav className="hidden lg:flex items-center gap-7">
             {navLinks.map((l) => {
               const active = location.pathname === l.to;

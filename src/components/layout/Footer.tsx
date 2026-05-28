@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logoUrl from "@/assets/logo.png";
+import logoWhite from "@/assets/logo-white.png";
 
 const marqueeText = "EMPOWERING AFRICAN YOUTH · CLIMATE DIPLOMACY · BUILDING AFRICA'S NEXT GENERATION · AU ENDORSED · TANZANIAN HOST · 55 MEMBER STATES · ";
 
@@ -43,9 +43,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Col 1 */}
           <div>
-            <div className="flex items-center gap-3 mb-5">
-              <img src={logoUrl} alt="AYCNC logo" width={36} height={36} className="h-9 w-auto" />
-              <span className="font-display font-bold text-xl text-white">AYCNC</span>
+            <div className="mb-5">
+              <img
+                src={logoWhite}
+                alt="AYCNC — The African Youth Climate Negotiation Center"
+                className="h-12 md:h-14 w-auto"
+              />
             </div>
             <p className="font-body font-light text-white/60 text-sm leading-relaxed mb-5">
               Africa's permanent institutional response to the climate diplomacy gap.
