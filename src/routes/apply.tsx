@@ -18,7 +18,7 @@ export default function ApplyPage() {
   useSeo({
     title: "Apply · AYCNC Cohort 1",
     description:
-      "Applications for AYCNC Cohort 1 open 15 July to 15 August 2026. Open to climate-active African youth aged 18–35 across all 55 AU member states.",
+      "Applications for AYCNC Cohort 1 open 15 July to 15 August 2026. Open to climate-active African youth aged 18 to 35 across all 55 AU member states.",
     ogDescription: "Your seat at the table awaits.",
     ogUrl: "/apply",
     canonical: "/apply",
@@ -104,8 +104,8 @@ function GeneralEligibility() {
               African Youth Climate Negotiation Center (AYCNC)
             </strong>{" "}
             is a permanent, pan-African institution that equips young Africans with the technical
-            knowledge, diplomatic fluency, and institutional access to participate in — and
-            progressively lead — international climate negotiations across the{" "}
+            knowledge, diplomatic fluency, and institutional access to participate in, and
+            progressively lead, international climate negotiations across the{" "}
             <strong className="font-semibold text-navy">UNFCCC, UNCCD and UN&nbsp;CBD</strong>.
           </p>
           <p>
@@ -143,11 +143,11 @@ function GeneralEligibility() {
 }
 
 const criteria = [
-  "Citizen of an African Union member state, aged 18–35",
+  "Citizen of an African Union member state, aged 18 to 35",
   "Genuine engagement in climate action, research, advocacy, or policy",
   "Holding or completing a tertiary qualification, or equivalent practitioner experience",
   "Able to commit fully to all three phases across the 12-month programme",
-  "Proficiency in at least one working language — English, French, or Arabic",
+  "Proficiency in at least one working language: English, French, or Arabic",
   "Open to all five AU sub-regions, with gender and sub-regional balance",
 ];
 
@@ -191,7 +191,7 @@ const faqGroups = [
     items: [
       {
         q: "What is the African Youth Climate Negotiation Center (AYCNC)?",
-        a: "AYCNC is a permanent, pan-African institution that equips exceptional young Africans with the technical knowledge, diplomatic fluency, and institutional access required to participate in — and progressively lead — international climate negotiations. It is a structured pipeline, not a one-off project, running from foundational training through mentored practice to direct deployment in UNFCCC negotiations.",
+        a: "AYCNC is a permanent, pan-African institution that equips exceptional young Africans with the technical knowledge, diplomatic fluency, and institutional access required to participate in, and progressively lead, international climate negotiations. It is a structured pipeline, not a one-off project, running from foundational training through mentored practice to direct deployment in UNFCCC negotiations.",
       },
       {
         q: "What is the format and duration of the training?",
@@ -216,7 +216,7 @@ const faqGroups = [
     ],
   },
   {
-    group: "Application Process & Requirements — 2026 Cohort",
+    group: "Application Process & Requirements for the 2026 Cohort",
     items: [
       {
         q: "What is the application deadline for the 2026 Cohort?",
@@ -224,7 +224,7 @@ const faqGroups = [
       },
       {
         q: "Who is eligible to apply?",
-        a: "Citizens of an AU member state aged 18–35 with demonstrable engagement in climate action, research, advocacy, or policy, who can commit fully to all three phases of the 12-month programme.",
+        a: "Citizens of an AU member state aged 18 to 35 with demonstrable engagement in climate action, research, advocacy, or policy, who can commit fully to all three phases of the 12-month programme.",
       },
       {
         q: "Where can I submit my application?",

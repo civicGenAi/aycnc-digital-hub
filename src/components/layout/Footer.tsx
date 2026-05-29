@@ -46,7 +46,7 @@ export default function Footer() {
             <div className="mb-5">
               <img
                 src={logoWhite}
-                alt="AYCNC — The African Youth Climate Negotiation Center"
+                alt="AYCNC, The African Youth Climate Negotiation Center"
                 className="h-12 md:h-14 w-auto"
               />
             </div>

@@ -69,12 +69,12 @@ const conventions = [
   {
     abbr: "UNCCD",
     name: "UN Convention to Combat Desertification",
-    desc: "Land degradation, drought and desertification — frontline issues for the Sahel, the Horn and drylands across Africa.",
+    desc: "Land degradation, drought and desertification, frontline issues for the Sahel, the Horn and drylands across Africa.",
   },
   {
     abbr: "UNCBD",
     name: "UN Convention on Biological Diversity",
-    desc: "Biodiversity, ecosystems and nature finance — the third pillar of the Rio Conventions.",
+    desc: "Biodiversity, ecosystems and nature finance, the third pillar of the Rio Conventions.",
   },
 ];
 
@@ -87,7 +87,7 @@ function RioConventions() {
           <h2 className="mt-4 font-display text-navy text-3xl md:text-5xl">The Three Rio Conventions</h2>
           <p className="mt-4 font-body text-ink leading-relaxed">
             AYCNC trains African youth to negotiate across all three UN environmental
-            conventions — not climate alone — so the continent speaks with one prepared voice.
+            conventions, not climate alone, so the continent speaks with one prepared voice.
           </p>
         </div>
         <AnimatedSection className="mt-12 grid md:grid-cols-3 gap-5">
