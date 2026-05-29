@@ -15,10 +15,10 @@ const navLinks = [
 
 function Logo() {
   return (
-    <Link to="/" className="flex items-center group" aria-label="AYCNC — home">
+    <Link to="/" className="flex items-center group" aria-label="AYCNC home">
       <img
         src={logoWhite}
-        alt="AYCNC — The African Youth Climate Negotiation Center"
+        alt="AYCNC, The African Youth Climate Negotiation Center"
         className="h-11 md:h-12 w-auto"
       />
     </Link>
@@ -113,7 +113,7 @@ export default function Navbar() {
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-40 lg:hidden flex flex-col overflow-hidden bg-navy-dark"
           >
-            {/* Decorative — on-brand, non-interactive */}
+            {/* Decorative, on-brand, non-interactive */}
             <span
               className="pointer-events-none absolute -right-12 top-16 font-display font-black leading-none text-white/[0.04] select-none"
               style={{ fontSize: "52vw" }}

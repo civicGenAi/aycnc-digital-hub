@@ -29,7 +29,7 @@ function upsertCanonical(href: string) {
   el.setAttribute("href", href);
 }
 
-// Lightweight per-page <head> management for the SPA — mirrors the per-route
+// Lightweight per-page <head> management for the SPA, mirrors the per-route
 // metadata the app declared under TanStack Router, without any SSR runtime.
 export function useSeo({ title, description, canonical, ogTitle, ogDescription, ogUrl }: SeoInput) {
   useEffect(() => {
