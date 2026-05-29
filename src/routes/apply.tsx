@@ -35,7 +35,13 @@ export default function ApplyPage() {
     canonical: "/apply",
   });
   const [formOpen, setFormOpen] = useState(false);
+  const [celebrate, setCelebrate] = useState(false);
   const openForm = () => setFormOpen(true);
+  const handleSubmitted = () => {
+    fireApplicationToast();
+    setCelebrate(true);
+    window.setTimeout(() => setCelebrate(false), 3200);
+  };
   return (
     <div>
       <Hero onApply={openForm} />
@@ -44,7 +50,8 @@ export default function ApplyPage() {
       <FAQs />
       <ApplyCTA onApply={openForm} />
       <Partners />
-      <ApplicationDialog open={formOpen} onOpenChange={setFormOpen} />
+      <ApplicationDialog open={formOpen} onOpenChange={setFormOpen} onSubmitted={handleSubmitted} />
+      {celebrate && <ConfettiBurst />}
     </div>
   );
 }
@@ -343,6 +350,47 @@ function fireApplicationToast() {
   );
 }
 
+function ConfettiBurst() {
+  const colors = ["#F5A623", "#FAD27A", "#2A7A4B", "#38A169", "#1B3A6B", "#FFFFFF"];
+  const pieces = Array.from({ length: 70 });
+  return (
+    <div className="pointer-events-none fixed inset-0 z-[100] overflow-hidden">
+      {pieces.map((_, i) => {
+        const xEnd = (Math.random() - 0.5) * 700;
+        const up = 150 + Math.random() * 260;
+        const down = 480 + Math.random() * 440;
+        const rot = (Math.random() - 0.5) * 720;
+        const dur = 1.8 + Math.random() * 1.1;
+        const size = 6 + Math.random() * 8;
+        const color = colors[i % colors.length];
+        const originLeft = 50 + (Math.random() - 0.5) * 26;
+        return (
+          <motion.span
+            key={i}
+            initial={{ x: 0, y: 0, opacity: 1, rotate: 0 }}
+            animate={{
+              x: [0, xEnd * 0.6, xEnd],
+              y: [0, -up, down],
+              rotate: [0, rot * 0.5, rot],
+              opacity: [1, 1, 0],
+            }}
+            transition={{ duration: dur, ease: "easeOut", times: [0, 0.32, 1] }}
+            style={{
+              position: "absolute",
+              top: "36%",
+              left: `${originLeft}%`,
+              width: size,
+              height: size * 0.55,
+              backgroundColor: color,
+              borderRadius: 2,
+            }}
+          />
+        );
+      })}
+    </div>
+  );
+}
+
 const stepLabels = ["Personal", "Education", "Experience", "Statement", "Pathway", "Review"];
 const inputCls =
   "w-full border border-navy/20 rounded-xl px-4 py-3 font-body text-navy-dark focus:border-gold focus:ring-2 focus:ring-gold/30 focus:outline-none transition-all";
@@ -351,9 +399,11 @@ const labelCls = "block font-mono text-xs uppercase tracking-wider text-navy/70 
 function ApplicationDialog({
   open,
   onOpenChange,
+  onSubmitted,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  onSubmitted: () => void;
 }) {
   const [step, setStep] = useState(0);
   const form = useForm({ mode: "onChange" });
@@ -366,12 +416,12 @@ function ApplicationDialog({
   const submit = form.handleSubmit(() => {
     close(false);
     form.reset();
-    fireApplicationToast();
+    onSubmitted();
   });
 
   return (
     <Dialog open={open} onOpenChange={close}>
-      <DialogContent className="max-w-2xl max-h-[88vh] overflow-y-auto">
+      <DialogContent className="w-[calc(100vw-1.5rem)] sm:w-full max-w-2xl max-h-[90dvh] overflow-y-auto p-5 sm:p-6 rounded-2xl">
         <DialogHeader>
           <DialogTitle className="font-display text-navy text-2xl">Apply for Cohort 1</DialogTitle>
           <DialogDescription className="font-body text-ink">
@@ -433,28 +483,51 @@ function ApplicationDialog({
 
 function ProgressBar({ current }: { current: number }) {
   return (
-    <div className="flex items-center gap-2 overflow-x-auto pb-1">
-      {stepLabels.map((label, i) => {
-        const active = i === current;
-        const done = i < current;
-        return (
-          <div key={i} className="flex items-center gap-2 flex-shrink-0">
-            <div
-              className={`flex items-center gap-2 px-3 py-1.5 rounded-full ${
-                active
-                  ? "bg-gold text-navy-dark"
-                  : done
-                    ? "bg-forest text-white"
-                    : "bg-white border border-navy/15 text-navy/40"
-              }`}
-            >
-              {done ? <Check size={14} /> : <span className="font-mono text-xs font-bold">{i + 1}</span>}
-              <span className="font-mono text-xs uppercase tracking-wider">{label}</span>
+    <div>
+      {/* Mobile: compact step indicator + progress line */}
+      <div className="sm:hidden">
+        <div className="flex items-center justify-between font-mono text-xs uppercase tracking-wider">
+          <span className="text-navy/60">
+            Step {current + 1} of {stepLabels.length}
+          </span>
+          <span className="text-gold font-bold">{stepLabels[current]}</span>
+        </div>
+        <div className="mt-2 h-1.5 rounded-full bg-navy/10 overflow-hidden">
+          <div
+            className="h-full bg-gold transition-all duration-300"
+            style={{ width: `${((current + 1) / stepLabels.length) * 100}%` }}
+          />
+        </div>
+      </div>
+
+      {/* Desktop: full step chips */}
+      <div className="hidden sm:flex items-center gap-2 overflow-x-auto pb-1">
+        {stepLabels.map((label, i) => {
+          const active = i === current;
+          const done = i < current;
+          return (
+            <div key={i} className="flex items-center gap-2 flex-shrink-0">
+              <div
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-full ${
+                  active
+                    ? "bg-gold text-navy-dark"
+                    : done
+                      ? "bg-forest text-white"
+                      : "bg-white border border-navy/15 text-navy/40"
+                }`}
+              >
+                {done ? (
+                  <Check size={14} />
+                ) : (
+                  <span className="font-mono text-xs font-bold">{i + 1}</span>
+                )}
+                <span className="font-mono text-xs uppercase tracking-wider">{label}</span>
+              </div>
+              {i < stepLabels.length - 1 && <div className="w-3 h-px bg-navy/15" />}
             </div>
-            {i < stepLabels.length - 1 && <div className="w-3 h-px bg-navy/15" />}
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }
