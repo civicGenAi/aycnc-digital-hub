@@ -35,7 +35,7 @@ function Hero() {
 
       <div className="relative mx-auto max-w-7xl px-6 md:px-12">
         <SectionEyebrow dark>IMPACT</SectionEyebrow>
-        <h1 className="mt-5 font-display font-black text-white leading-none overflow-hidden" style={{ fontSize: "clamp(4rem,14vw,15rem)" }}>
+        <h1 className="mt-5 font-display font-black text-white leading-none overflow-hidden" style={{ fontSize: "clamp(2.75rem,8vw,6rem)" }}>
           Impact<br /><span className="italic gradient-text-gold">at Scale</span>
         </h1>
         <p className="mt-6 font-body text-white/70 text-lg max-w-2xl">

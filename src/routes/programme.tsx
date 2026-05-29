@@ -38,7 +38,7 @@ function Hero() {
       </svg>
 
       <div className="relative mx-auto max-w-5xl px-6 md:px-12 text-center">
-        <h1 className="font-display font-black text-white leading-[1.05]" style={{ fontSize: "clamp(3rem,8vw,7.5rem)" }}>
+        <h1 className="font-display font-black text-white leading-[1.05]" style={{ fontSize: "clamp(2.5rem,6vw,5rem)" }}>
           From Classroom<br /><span className="italic gradient-text-gold">to COP</span>
         </h1>
         <div className="mt-10 overflow-hidden">
