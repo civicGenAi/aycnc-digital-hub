@@ -44,9 +44,9 @@
   --color-cream: var(--cream);
   --color-ink: var(--ink);
 
-  --font-display: "Anton", sans-serif;
-  --font-body: "Montserrat", system-ui, sans-serif;
-  --font-mono: "Montserrat", system-ui, sans-serif;
+  --font-display: "Libre Franklin", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "Inter", system-ui, sans-serif;
 
   --animate-shimmer: shimmer 2.8s ease-in-out infinite;
   --animate-float-y: floatY 6s ease-in-out infinite;
