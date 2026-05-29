@@ -5,6 +5,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import MobileApplyBar from "@/components/layout/MobileApplyBar";
 import NotFoundPage from "@/components/pages/NotFoundPage";
+import { Toaster } from "@/components/ui/sonner";
 
 import HomePage from "@/routes/index";
 import AboutPage from "@/routes/about";
@@ -80,6 +81,7 @@ export default function App() {
         <Footer />
         <MobileApplyBar />
       </div>
+      <Toaster position="top-center" />
     </ErrorBoundary>
   );
 }
