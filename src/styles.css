@@ -44,9 +44,9 @@
   --color-cream: var(--cream);
   --color-ink: var(--ink);
 
-  --font-display: "Fraunces", Georgia, serif;
-  --font-body: "DM Sans", system-ui, sans-serif;
-  --font-mono: "Space Mono", monospace;
+  --font-display: "Anton", sans-serif;
+  --font-body: "Montserrat", system-ui, sans-serif;
+  --font-mono: "Montserrat", system-ui, sans-serif;
 
   --animate-shimmer: shimmer 2.8s ease-in-out infinite;
   --animate-float-y: floatY 6s ease-in-out infinite;
@@ -130,6 +130,17 @@
   .font-display { font-family: var(--font-display); }
   .font-body { font-family: var(--font-body); }
   .font-mono { font-family: var(--font-mono); }
+
+  /* Module bento: stacks on mobile, switches to the bento grid at md+ */
+  .bento-areas { grid-template-areas: none; }
+  @media (min-width: 768px) {
+    .bento-areas {
+      grid-template-areas:
+        "m1 m1 m2 m3"
+        "m4 m5 m5 m6"
+        "m7 m8 m8 m8";
+    }
+  }
 
   .bg-hero-mesh {
     background-image:
