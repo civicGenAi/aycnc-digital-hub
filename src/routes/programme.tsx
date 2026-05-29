@@ -17,6 +17,7 @@ export default function ProgrammePage() {
   return (
     <div>
       <Hero />
+      <RioConventions />
       <ThreePhases />
       <ModulesBento />
       <COPDeployment />
@@ -54,6 +55,54 @@ function Hero() {
           <PillBadge color="white">8 MODULES</PillBadge>
           <PillBadge color="green">12 MONTHS</PillBadge>
         </div>
+      </div>
+    </section>
+  );
+}
+
+const conventions = [
+  {
+    abbr: "UNFCCC",
+    name: "UN Framework Convention on Climate Change",
+    desc: "The COP, SBSTA and SBI processes where the African Group of Negotiators defends the continent's climate position.",
+  },
+  {
+    abbr: "UNCCD",
+    name: "UN Convention to Combat Desertification",
+    desc: "Land degradation, drought and desertification — frontline issues for the Sahel, the Horn and drylands across Africa.",
+  },
+  {
+    abbr: "UNCBD",
+    name: "UN Convention on Biological Diversity",
+    desc: "Biodiversity, ecosystems and nature finance — the third pillar of the Rio Conventions.",
+  },
+];
+
+function RioConventions() {
+  return (
+    <section className="bg-cream py-20 md:py-24">
+      <div className="mx-auto max-w-6xl px-6 md:px-12">
+        <div className="text-center max-w-2xl mx-auto">
+          <SectionEyebrow>WHERE OUR DELEGATES NEGOTIATE</SectionEyebrow>
+          <h2 className="mt-4 font-display text-navy text-3xl md:text-5xl">The Three Rio Conventions</h2>
+          <p className="mt-4 font-body text-ink leading-relaxed">
+            AYCNC trains African youth to negotiate across all three UN environmental
+            conventions — not climate alone — so the continent speaks with one prepared voice.
+          </p>
+        </div>
+        <AnimatedSection className="mt-12 grid md:grid-cols-3 gap-5">
+          {conventions.map((c) => (
+            <motion.div
+              key={c.abbr}
+              variants={fadeUpItem}
+              className="rounded-2xl bg-white border border-navy/10 p-7 hover:shadow-lg transition-shadow"
+            >
+              <div className="font-display text-gold text-3xl md:text-4xl tracking-tight">{c.abbr}</div>
+              <h3 className="mt-3 font-body font-semibold text-navy text-base leading-snug">{c.name}</h3>
+              <p className="mt-2 font-body text-ink text-sm leading-relaxed">{c.desc}</p>
+            </motion.div>
+          ))}
+        </AnimatedSection>
       </div>
     </section>
   );
@@ -162,7 +211,7 @@ function ModulesBento() {
           <h2 className="mt-4 font-display font-black text-navy text-3xl md:text-5xl">The full curriculum.</h2>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 md:grid-cols-4 auto-rows-min gap-4" style={{ gridTemplateAreas: '"m1 m1 m2 m3" "m4 m5 m5 m6" "m7 m8 m8 m8"' }}>
+        <div className="bento-areas mt-14 grid grid-cols-1 gap-4 md:grid-cols-4 md:auto-rows-min">
           {programmeModules.map((m) => (
             <motion.div
               key={m.num}
